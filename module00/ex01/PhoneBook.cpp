@@ -106,29 +106,72 @@ class PhoneBook
 			current = 0;
 			pos = 0;
 		}
-		void ft_add(void);
-		//void search(void);
+		void ft_display_list();
+		void add(void);
+		void search(void);
 
 };
 
-void PhoneBook::ft_add()
+void get_check_assign(std::string &value, std::string str)
+{
+	std::cout<< str;
+	while (std::getline(std::cin, value))
+	{
+		if (value.empty())
+		{
+			std::cout<<"Invalid input try again ...\n";
+			std::cout<< str;
+			//getline(std::cin, value);
+		}
+		else
+			break;
+	}
+}
+std::string ft_resize(std::string str)
+{
+	if(str.length() > 10)
+	{
+		str.erase(str.begin() + 9, str.end());
+		str.append(".");
+	}
+	return (str);
+}
+
+void PhoneBook::ft_display_list()
+{
+	std::cout<< "|     Index | First name | Last name | Nickname| \n";
+	for (int i = 0; i < this->pos; i++)
+	{
+		std::cout
+		<< "|" << std::setw(10) << i
+		<< "|" << std::setw(10) << ft_resize(this->contacts[i].getFname())
+		<< "|" << std::setw(10) << ft_resize(this->contacts[i].getLname())
+		<< "|" << std::setw(10) << ft_resize(this->contacts[i].getNickname()) << "|"
+		<< std::endl;
+	}
+}
+
+void PhoneBook::search()
+{
+	int i;
+	ft_display_list();
+	
+
+
+}
+void PhoneBook::add()
 {
 	Contact contact;
 
-	std::cout<<"First name: ";
-	getline(std::cin, f_name);
+	get_check_assign(f_name, "First name: ");
 	contact.setFname(f_name);
-	std::cout<<"Last name: ";
-	getline(std::cin, l_name);
+	get_check_assign(l_name, "Last name: ");
 	contact.setLname(l_name);
-	std::cout<<"Nickname: ";
-	getline(std::cin, nickname);
+	get_check_assign(nickname, "Nickname: ");
 	contact.setNickname(nickname);
-	std::cout<<"Phone number: ";
-	getline(std::cin, phone_number);
+	get_check_assign(phone_number, "Phone number: ");
 	contact.setPhnumber(phone_number);
-	std::cout<<"Darkest secret: ";
-	getline(std::cin, darkest_secret);
+	get_check_assign(darkest_secret, "Darkest secret: ");
 	contact.setDarkestSecret(darkest_secret);
 	this->contacts[current % 8] = contact;
 	this->current++;
@@ -156,17 +199,17 @@ int main()
 	ft_display_menu();
 	while(std::cin.eof() == 0)
 	{
-		std::cout <<
+		std::cout << "> ";
 		std::getline(std::cin, cmd);
 		//if (nb == 9)
 		//	nb = 1;
 		if (cmd == "ADD")
 		//{
-			phoneBook.ft_add();
+			phoneBook.add();
 		// 	nb++;
 		// }
-		// else if (cmd == "SEARCH")
-		// 	phoneBook.search();
+		else if (cmd == "SEARCH")
+			phoneBook.search();
 		else if (cmd == "EXIT")
 		{
 			std::cout << "GOOD BYE !"<<std::endl;
