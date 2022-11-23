@@ -44,7 +44,7 @@ void Contact::setFname(std::string fname)
 }
 void Contact::setLname(std::string lname)
 {
-	this->l_name = lname
+	this->l_name = lname;
 }
 void Contact::setNickname(std::string nickname)
 {
@@ -93,26 +93,48 @@ class PhoneBook
 {
 	private:
 		Contact contacts[8];
-		int		contacts_nb;
+		int	current;
+		int pos;
+		std::string f_name;
+		std::string l_name;
+		std::string nickname;
+		std::string	darkest_secret;
+		std::string phone_number;
 	public:
-		PhoneBook(void);
-		void add(void);
-		void search(void);
+		PhoneBook(void)
+		{
+			current = 0;
+			pos = 0;
+		}
+		void ft_add(void);
+		//void search(void);
 
 };
 
-void PhoneBook::add(int nb)
+void PhoneBook::ft_add()
 {
 	Contact contact;
 
 	std::cout<<"First name: ";
-	std::getline(std::cin, );
+	getline(std::cin, f_name);
+	contact.setFname(f_name);
 	std::cout<<"Last name: ";
+	getline(std::cin, l_name);
+	contact.setLname(l_name);
 	std::cout<<"Nickname: ";
-	std::cout<< "Phone number: ";
-
-
-
+	getline(std::cin, nickname);
+	contact.setNickname(nickname);
+	std::cout<<"Phone number: ";
+	getline(std::cin, phone_number);
+	contact.setPhnumber(phone_number);
+	std::cout<<"Darkest secret: ";
+	getline(std::cin, darkest_secret);
+	contact.setDarkestSecret(darkest_secret);
+	this->contacts[current % 8] = contact;
+	this->current++;
+	if (this->current <= 8)
+		this->pos = this->current;
+	std::cout << "ADDED SUCCESSFULY" << std::endl;
 }
 
 void ft_display_menu()
@@ -129,25 +151,29 @@ int main()
 {
 	PhoneBook phoneBook;
 	std::string cmd;
-	int nb = 1
+	int nb = 1;
 
 	ft_display_menu();
 	while(std::cin.eof() == 0)
 	{
+		std::cout <<
 		std::getline(std::cin, cmd);
-		if (nb == 9)
-			nb = 1;
+		//if (nb == 9)
+		//	nb = 1;
 		if (cmd == "ADD")
-		{
-			phoneBook.add(nb);
-			nb++;
-		}
-		else if (cmd == "SEARCH")
-			phoneBook.search();
+		//{
+			phoneBook.ft_add();
+		// 	nb++;
+		// }
+		// else if (cmd == "SEARCH")
+		// 	phoneBook.search();
 		else if (cmd == "EXIT")
+		{
+			std::cout << "GOOD BYE !"<<std::endl;
 			break;
+		}
 		else
-			std::cout << std::endl;
+			std::cout << "COMMAND NOT FOUND !"<<std::endl;
 	}
 	return (0);
 }
