@@ -139,7 +139,7 @@ std::string ft_resize(std::string str)
 
 void PhoneBook::ft_display_list()
 {
-	std::cout<< "|     Index | First name | Last name | Nickname| \n";
+	std::cout<< "|     Index|First name| Last name| Nickname | \n";
 	for (int i = 0; i < this->pos; i++)
 	{
 		std::cout
@@ -155,7 +155,7 @@ void PhoneBook::search()
 {
 	int i;
 	ft_display_list();
-	
+
 
 
 }
