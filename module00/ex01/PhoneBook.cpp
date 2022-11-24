@@ -12,6 +12,7 @@
 
 # include <iostream>
 # include <string>
+#include <climits>
 # include <iomanip>
 
 class Contact
@@ -153,10 +154,26 @@ void PhoneBook::ft_display_list()
 
 void PhoneBook::search()
 {
-	int i;
+	int contact_index;
+
 	ft_display_list();
-
-
+	std::cout<< "Enter the index of the entry to display : ";
+	std::cin >> contact_index;
+	if (std::cin.fail())
+		std::cout << "Error : Invalid Input";
+	else
+	{
+		if (contact_index < this->pos)
+		{
+			std::cout << "First name: " << this->contacts[contact_index].getFname() << std::endl;
+			std::cout << "Last name: " << this->contacts[contact_index].getLname() << std::endl;
+			std::cout << "Nickname: " << this->contacts[contact_index].getNickname() << std::endl;
+			std::cout << "Phone number: " << this->contacts[contact_index].getPhnumber() << std::endl;
+			std::cout << "Darkest Secret: " << this->contacts[contact_index].getDarkestSecret() << std::endl;
+		}
+	}
+	std::cin.clear();
+	std::cin.ignore(INT_MAX, '\n');
 
 }
 void PhoneBook::add()
