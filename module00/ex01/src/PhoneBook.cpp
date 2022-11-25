@@ -10,108 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-# include <string>
-#include <climits>
-# include <iomanip>
+#include "../inc/phonebook.hpp"
 
-class Contact
+PhoneBook::PhoneBook()
 {
-	private:
-		std::string f_name;
-		std::string l_name;
-		std::string nickname;
-		std::string	darkest_secret;
-		std::string phone_number;
-	public:
-		Contact();
-
-		void setFname(std::string fname);
-		void setLname(std::string lname);
-		void setNickname(std::string nickname);
-		void setDarkestSecret(std::string darkestSecret);
-		void setPhnumber(std::string phoneNumber);
-
-		std::string getFname();
-		std::string getLname();
-		std::string getNickname();
-		std::string getDarkestSecret();
-		std::string getPhnumber();
-};
-
-void Contact::setFname(std::string fname)
-{
-	this->f_name = fname;
+	current = 0;
+	pos = 0;
 }
-void Contact::setLname(std::string lname)
-{
-	this->l_name = lname;
-}
-void Contact::setNickname(std::string nickname)
-{
-	this->nickname = nickname;
-}
-void Contact::setDarkestSecret(std::string darkestSecret)
-{
-	this->darkest_secret = darkestSecret;
-}
-void Contact::setPhnumber(std::string phoneNumber)
-{
-	this->phone_number = phoneNumber;
-}
-
-std::string Contact::getFname()
-{
-	return (this->f_name);
-}
-
-std::string Contact::getLname()
-{
-	return (this->l_name);
-}
-
-std::string Contact::getNickname()
-{
-	return (this->nickname);
-}
-
-std::string Contact::getDarkestSecret()
-{
-	return (this->darkest_secret);
-}
-
-std::string Contact::getPhnumber()
-{
-	return (this->phone_number);
-}
-
-Contact::Contact()
-{
-}
-
-
-class PhoneBook
-{
-	private:
-		Contact contacts[8];
-		int	current;
-		int pos;
-		std::string f_name;
-		std::string l_name;
-		std::string nickname;
-		std::string	darkest_secret;
-		std::string phone_number;
-	public:
-		PhoneBook(void)
-		{
-			current = 0;
-			pos = 0;
-		}
-		void ft_display_list();
-		void add(void);
-		void search(void);
-
-};
 
 void get_check_assign(std::string &value, std::string str)
 {
@@ -141,7 +46,7 @@ std::string ft_resize(std::string str)
 void PhoneBook::ft_display_list()
 {
 	std::cout<< "|     Index|First name| Last name| Nickname | \n";
-	for (int i = 0; i < this->pos; i++)
+	for (int i = 0; i < (int)this->pos; i++)
 	{
 		std::cout
 		<< "|" << std::setw(10) << i
@@ -176,21 +81,22 @@ void PhoneBook::search()
 	std::cin.ignore(INT_MAX, '\n');
 
 }
+
 void PhoneBook::add()
 {
-	Contact contact;
+	Contact ctc;
 
 	get_check_assign(f_name, "First name: ");
-	contact.setFname(f_name);
+	ctc.setFname(f_name);
 	get_check_assign(l_name, "Last name: ");
-	contact.setLname(l_name);
+	ctc.setLname(l_name);
 	get_check_assign(nickname, "Nickname: ");
-	contact.setNickname(nickname);
+	ctc.setNickname(nickname);
 	get_check_assign(phone_number, "Phone number: ");
-	contact.setPhnumber(phone_number);
+	ctc.setPhnumber(phone_number);
 	get_check_assign(darkest_secret, "Darkest secret: ");
-	contact.setDarkestSecret(darkest_secret);
-	this->contacts[current % 8] = contact;
+	ctc.setDarkestSecret(darkest_secret);
+	this->contacts[current % 8] = ctc;
 	this->current++;
 	if (this->current <= 8)
 		this->pos = this->current;
@@ -211,20 +117,14 @@ int main()
 {
 	PhoneBook phoneBook;
 	std::string cmd;
-	int nb = 1;
 
 	ft_display_menu();
 	while(std::cin.eof() == 0)
 	{
 		std::cout << "> ";
 		std::getline(std::cin, cmd);
-		//if (nb == 9)
-		//	nb = 1;
 		if (cmd == "ADD")
-		//{
 			phoneBook.add();
-		// 	nb++;
-		// }
 		else if (cmd == "SEARCH")
 			phoneBook.search();
 		else if (cmd == "EXIT")
