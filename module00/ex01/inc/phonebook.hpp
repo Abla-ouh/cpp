@@ -6,7 +6,7 @@
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:39:14 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/11/25 16:08:48 by abouhaga         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:01:05 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook(){};
 		void ft_display_list();
+		void get_check_assign(std::string &value, std::string str);
 		void add(void);
 		void search(void);
 };

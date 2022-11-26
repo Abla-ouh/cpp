@@ -18,19 +18,19 @@ PhoneBook::PhoneBook()
 	pos = 0;
 }
 
-void get_check_assign(std::string &value, std::string str)
+void PhoneBook::get_check_assign(std::string &value, std::string str)
 {
 	std::cout<< str;
-	while (std::getline(std::cin, value))
+	std::getline(std::cin, value);
+	if (std::cin.eof())
+		exit(1);
+	while (value.empty())
 	{
-		if (value.empty())
-		{
-			std::cout<<"Invalid input try again ...\n";
-			std::cout<< str;
-			//getline(std::cin, value);
-		}
-		else
-			break;
+		std::cout<<"Invalid input try again ...\n";
+		std::cout<< str;
+		std::getline(std::cin, value);
+		if (std::cin.eof())
+			exit(1);
 	}
 }
 std::string ft_resize(std::string str)
@@ -59,27 +59,38 @@ void PhoneBook::ft_display_list()
 
 void PhoneBook::search()
 {
-	int contact_index;
+	std::string contact_index;
+	int i = 0;
 
 	ft_display_list();
 	std::cout<< "Enter the index of the entry to display : ";
-	std::cin >> contact_index;
-	if (std::cin.fail())
-		std::cout << "Error : Invalid Input";
+	std::getline(std::cin, contact_index);
+	while (contact_index[i])
+	{
+		if (!std::isdigit(contact_index[i]))
+		{
+			std::cout << "Error : Invalid Input" << std::endl;
+			return ;
+		}
+		i++;
+	}
+	if (std::cin.eof())
+		exit(1);
+	else if(std::cin.fail() || contact_index.empty())
+		std::cout << "Error : Invalid Input" << std::endl;
 	else
 	{
-		if (contact_index < this->pos)
+		if (std::atoi(contact_index.c_str()) >= 0 && std::atoi(contact_index.c_str()) < this->pos)
 		{
-			std::cout << "First name: " << this->contacts[contact_index].getFname() << std::endl;
-			std::cout << "Last name: " << this->contacts[contact_index].getLname() << std::endl;
-			std::cout << "Nickname: " << this->contacts[contact_index].getNickname() << std::endl;
-			std::cout << "Phone number: " << this->contacts[contact_index].getPhnumber() << std::endl;
-			std::cout << "Darkest Secret: " << this->contacts[contact_index].getDarkestSecret() << std::endl;
+			std::cout << "First name: " << this->contacts[std::atoi(contact_index.c_str())].getFname() << std::endl;
+			std::cout << "Last name: " << this->contacts[std::atoi(contact_index.c_str())].getLname() << std::endl;
+			std::cout << "Nickname: " << this->contacts[std::atoi(contact_index.c_str())].getNickname() << std::endl;
+			std::cout << "Phone number: " << this->contacts[std::atoi(contact_index.c_str())].getPhnumber() << std::endl;
+			std::cout << "Darkest Secret: " << this->contacts[std::atoi(contact_index.c_str())].getDarkestSecret() << std::endl;
 		}
+		else
+			std::cout << "No contact for this index...\n";
 	}
-	std::cin.clear();
-	std::cin.ignore(INT_MAX, '\n');
-
 }
 
 void PhoneBook::add()
@@ -123,6 +134,8 @@ int main()
 	{
 		std::cout << "> ";
 		std::getline(std::cin, cmd);
+		if (std::cin.eof())
+			exit(1);
 		if (cmd == "ADD")
 			phoneBook.add();
 		else if (cmd == "SEARCH")

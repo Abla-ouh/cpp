@@ -6,7 +6,7 @@
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:38:08 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/10/05 00:19:03 by abouhaga         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:17:02 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main (int ac, char **av)
 	{
 		for (int i = 1; i < ac; i++)
 		{
-			for (size_t j = 0; j < strlen(av[i]); j++)
+			for (size_t j = 0; j < std::strlen(av[i]); j++)
 			{
-				c = toupper(av[i][j]);
+				c = std::toupper(av[i][j]);
 				std::cout << c;
 			}
 		}
