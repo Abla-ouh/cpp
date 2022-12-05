@@ -5,18 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 00:57:58 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/11/29 19:23:41 by abouhaga         ###   ########.fr       */
+/*   Created: 2022/11/29 19:32:25 by abouhaga          #+#    #+#             */
+/*   Updated: 2022/11/29 20:02:22 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main ()
+int main()
 {
     Zombie *zom;
-    zom = newZombie("foo");
-    zom->annouce();
-    randomChump("zomb");
-    delete zom;
+
+    zom = zombieHorde(-3, "sb3");
+    delete [] zom;
 }

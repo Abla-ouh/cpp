@@ -5,18 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 00:57:58 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/11/29 19:23:41 by abouhaga         ###   ########.fr       */
+/*   Created: 2022/12/05 11:04:05 by abouhaga          #+#    #+#             */
+/*   Updated: 2022/12/05 11:24:42 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
 
-int main ()
+int main(int argc, char** argv)
 {
-    Zombie *zom;
-    zom = newZombie("foo");
-    zom->annouce();
-    randomChump("zomb");
-    delete zom;
+    
 }
