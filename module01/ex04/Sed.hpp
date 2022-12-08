@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 11:04:05 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/12/08 00:23:13 by abouhaga         ###   ########.fr       */
+/*   Created: 2022/12/07 22:44:15 by abouhaga          #+#    #+#             */
+/*   Updated: 2022/12/08 00:23:06 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sed.hpp"
+#ifndef SED_HPP
 
-int main(int argc, char *argv[])
+#define SED_HPP
+
+#include <iostream>
+#include <fstream>
+
+class Sed
 {
-    if (argc != 4)
-    {
-        std::cerr<< "Tip : ./Sed <filename> <s1> <s2>" << std::endl;
-        std::cout << "<s1> and <s2> not empty." << std::endl;
-        exit (EXIT_FAILURE);
-    }
-    else
-    {
-        Sed sed(argv[1]);
-        sed.replaceit(argv[2], argv[3]);
-    }
-    return (EXIT_SUCCESS);
-}
+    private :
+        std::string in;
+        std::string out;
+    public:
+        Sed(std::string infile);
+        ~Sed();
+        void replaceit(std::string s1, std::string s2);
+};
+#endif
