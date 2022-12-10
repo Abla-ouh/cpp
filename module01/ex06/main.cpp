@@ -6,7 +6,7 @@
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 15:28:42 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/12/10 15:41:04 by abouhaga         ###   ########.fr       */
+/*   Updated: 2022/12/10 16:05:30 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int ac, char **av)
 {
 	Harl harl;
 	std::string moods[] = {"debug", "info", "warning", "error"};
+
 	if (ac != 1)
 	{
 		int i = 0;
