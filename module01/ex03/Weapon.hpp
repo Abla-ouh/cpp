@@ -6,7 +6,7 @@
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 19:21:52 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/12/02 17:27:11 by abouhaga         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:27:42 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Weapon
     public:
         Weapon(std::string type);
         ~Weapon();
-        const std::string& getType();
+        const std::string& getType(); //all references are const
         void setType(std::string type);
 };
 #endif

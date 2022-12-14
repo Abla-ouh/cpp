@@ -6,7 +6,7 @@
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:32:25 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/11/29 20:02:22 by abouhaga         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:02:59 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int main()
 {
     Zombie *zom;
 
-    zom = zombieHorde(-3, "sb3");
+    zom = zombieHorde(3, "sb3");
     delete [] zom;
 }
