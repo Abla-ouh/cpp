@@ -6,11 +6,11 @@
 #    By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 14:29:50 by abouhaga          #+#    #+#              #
-#    Updated: 2022/12/27 23:28:02 by abouhaga         ###   ########.fr        #
+#    Updated: 2022/12/30 13:36:54 by abouhaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Fixed
+NAME		= Fixed00
 SRCS		= main.cpp Fixed.cpp
 
 CC	= c++
