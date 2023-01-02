@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouhaga <abouhaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 12:55:06 by abouhaga          #+#    #+#             */
-/*   Updated: 2022/12/30 16:03:28 by abouhaga         ###   ########.fr       */
+/*   Created: 2023/01/02 15:50:18 by abouhaga          #+#    #+#             */
+/*   Updated: 2023/01/02 16:05:12 by abouhaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int main(void)
+# include <iostream>
+
+class Animal
 {
-	ClapTrap r1("ZER0");
-	ClapTrap r2("AXTON");
+    protected:
+        std::string _type;
+    public:
+        Animal();
+        Animal(std::string type);
+        Animal(const Animal &cpy);
+        Animal &operator=(const Animal &oper);
+        ~Animal();
+        std::string getType() const;
+        virtual void makeSound() const;
+};
 
-	r1.attack("AXTON");
-	r2.takeDamage(10);
-	r2.beRepaired(20);
-	r2.attack("ZER0");
-	r1.takeDamage(10);
-	r1.attack("AXTON");
-	return (0);
-}
+#endif
